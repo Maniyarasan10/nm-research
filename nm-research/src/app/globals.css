@@ -1,0 +1,532 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   Light Editorial Scientific design system
+   ———————————————————————————————————————————————————————————
+   A calm, institutional, publication-grade identity.
+   Warm paper surfaces, crisp hairlines, serif editorial display
+   type, data-dense layouts. One restrained accent for action,
+   one for verified/quantified states. No rainbow tints, no
+   decorative gradients/orbs, no generic navy wall.
+
+   Color tokens are runtime CSS variables (non-inline @theme) so
+   a single `.dark` override re-themes the entire site — every
+   utility such as bg-paper/text-ink/border-rule and the bare
+   aliases (--paper/--ink/...) used by hand-written component
+   classes adapt automatically to the active theme.
+   ============================================================ */
+
+@theme {
+  /* Paper surfaces (warm, low-glare) */
+  --color-paper: #faf9f6;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f2ed;
+  --color-surface-3: #edebe6;
+
+  /* Ink — editorial text scale */
+  --color-ink: #17191d;
+  --color-ink-2: #4a4f58;
+  --color-ink-3: #8a8f98;
+
+  /* Hairlines — structure, not decoration */
+  --color-rule: rgba(23, 25, 29, 0.12);
+  --color-rule-strong: rgba(23, 25, 29, 0.22);
+
+  /* Brand authority — deep petrol/ink navy (solid backgrounds) */
+  --color-navy: #14243d;
+  --color-navy-dark: #0d1a2e;
+  --color-navy-mid: #24466b;
+
+  /* Text accent — the "navy link/heading" you read on cards.
+     Kept as its own token so it can lighten in dark mode while
+     --color-navy stays deep for solid background blocks. */
+  --color-brand: #14243d;
+
+  /* Primary action accent (gold) — used sparingly */
+  --color-accent: #a67806;
+  --color-accent-dim: rgba(166, 120, 6, 0.08);
+
+  /* Verified / quantified state (green) */
+  --color-green: #14684a;
+  --color-green-soft: rgba(20, 104, 74, 0.08);
+
+  /* Motion tokens — one calm duration scale + easing for the whole site */
+  --motion-fast: 0.14s;
+  --motion-base: 0.24s;
+  --motion-slow: 0.38s;
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Legacy aliases kept for compatibility with existing utilities */
+  --color-primary: #14243d;
+  --color-primary-dim: rgba(20, 36, 61, 0.08);
+  --color-secondary: #24466b;
+  --color-secondary-dim: rgba(36, 70, 107, 0.08);
+  --color-background: #faf9f6;
+  --color-border-soft: rgba(23, 25, 29, 0.12);
+  --color-border-mid: rgba(23, 25, 29, 0.24);
+  --color-text: #17191d;
+  --color-text-2: #4a4f58;
+  --color-text-3: #8a8f98;
+  --color-gold: #a67806;
+  --color-gold-light: #c08f0a;
+  --color-green-dark: #0e4d36;
+  --color-green-dim: rgba(20, 104, 74, 0.08);
+}
+
+/* Bare aliases used by hand-written component classes (.card,
+   .btn, .tag, .input, body, etc.). These map to the theme vars so
+   they become theme-aware and can be overridden in `.dark`. */
+:root {
+  --paper: var(--color-paper);
+  --surface: var(--color-surface);
+  --surface-2: var(--color-surface-2);
+  --surface-3: var(--color-surface-3);
+  --ink: var(--color-ink);
+  --ink-2: var(--color-ink-2);
+  --ink-3: var(--color-ink-3);
+  --rule: var(--color-rule);
+  --rule-strong: var(--color-rule-strong);
+  --navy: var(--color-navy);
+  --navy-dark: var(--color-navy-dark);
+  --navy-mid: var(--color-navy-mid);
+  --brand: var(--color-brand);
+  --accent: var(--color-accent);
+  --accent-dim: var(--color-accent-dim);
+  --green: var(--color-green);
+  --green-soft: var(--color-green-soft);
+  --gold: var(--color-gold);
+  --gold-light: var(--color-gold-light);
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+}
+
+/* ---------- Dark theme ---------- */
+.dark {
+  --color-paper: #0e1318;
+  --color-surface: #151b22;
+  --color-surface-2: #1b222b;
+  --color-surface-3: #222b35;
+
+  --color-ink: #e7eaee;
+  --color-ink-2: #aab3bd;
+  --color-ink-3: #68717c;
+
+  --color-rule: rgba(231, 234, 238, 0.12);
+  --color-rule-strong: rgba(231, 234, 238, 0.22);
+
+  /* Navy blocks stay deep as contrast surfaces; only the text
+     accent (`brand`) lightens so headings remain readable. */
+  --color-navy: #20334f;
+  --color-navy-dark: #101a2b;
+  --color-navy-mid: #2c527d;
+  --color-brand: #8fb2e8;
+
+  --color-accent: #c08f0a;
+  --color-accent-dim: rgba(192, 143, 10, 0.16);
+
+  --color-green: #2f9a70;
+  --color-green-soft: rgba(47, 154, 112, 0.16);
+
+  --color-primary: #8fb2e8;
+  --color-primary-dim: rgba(143, 178, 232, 0.14);
+  --color-secondary: #2c527d;
+  --color-secondary-dim: rgba(44, 82, 125, 0.14);
+  --color-background: #0e1318;
+  --color-border-soft: rgba(231, 234, 238, 0.12);
+  --color-border-mid: rgba(231, 234, 238, 0.24);
+  --color-text: #e7eaee;
+  --color-text-2: #aab3bd;
+  --color-text-3: #68717c;
+  --color-gold: #c08f0a;
+  --color-gold-light: #d3a51d;
+  --color-green-dark: #2f9a70;
+  --color-green-dim: rgba(47, 154, 112, 0.16);
+
+  --paper: var(--color-paper);
+  --surface: var(--color-surface);
+  --surface-2: var(--color-surface-2);
+  --surface-3: var(--color-surface-3);
+  --ink: var(--color-ink);
+  --ink-2: var(--color-ink-2);
+  --ink-3: var(--color-ink-3);
+  --rule: var(--color-rule);
+  --rule-strong: var(--color-rule-strong);
+  --navy: var(--color-navy);
+  --navy-dark: var(--color-navy-dark);
+  --navy-mid: var(--color-navy-mid);
+  --brand: var(--color-brand);
+  --accent: var(--color-accent);
+  --accent-dim: var(--color-accent-dim);
+  --green: var(--color-green);
+  --green-soft: var(--color-green-soft);
+  --gold: var(--color-gold);
+  --gold-light: var(--color-gold-light);
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+}
+
+.dark .card {
+  background: var(--surface);
+  border-color: var(--rule);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.dark .card:hover {
+  border-color: var(--rule-strong);
+}
+.dark ::selection {
+  background: rgba(192, 143, 10, 0.25);
+}
+.dark ::-webkit-scrollbar-track {
+  background: #151b22;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #2a333e;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3a4654;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-eb-garamond), var(--font-inter), serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.005em;
+  line-height: 1.6;
+}
+
+/* ---------- Editorial type primitives ---------- */
+@layer components {
+/* Mono, tracked uppercase eyebrow — "01 / Objective" */
+.eyebrow {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+
+/* Serif display headline reset */
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  font-weight: 500;
+}
+
+/* ---------- Structure primitives ---------- */
+
+/* Hairline rule separator */
+.hairline {
+  height: 1px;
+  width: 100%;
+  background: var(--rule);
+}
+
+/* Signature accent rule (short, on the left of labels) */
+.sig-rule {
+  height: 1px;
+  width: 3rem;
+  background: var(--navy);
+}
+
+/* Tabular numerals for aligned stat rows */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Editorial emphasis — serif italic in the brand color, no underline hack */
+.emph {
+  font-style: italic;
+  color: var(--brand);
+  font-family: var(--font-display);
+}
+
+/* ---------- Unified card system ---------- */
+
+/* Standard card — flat editorial: hairline, near-white, no elevation.
+   Hover draws a 2px accent rule across the top edge (rule-draw
+   micro-interaction, consistent with the site's signature effect). */
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(23, 25, 29, 0.03);
+  transition: box-shadow 0.24s var(--ease-editorial),
+    border-color 0.24s ease, transform 0.24s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 0 0 2px 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-editorial);
+}
+
+.card:hover {
+  border-color: var(--rule-strong);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Featured plan card — gold border tint, persistent top rule; stays flat */
+.card-featured {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(166, 120, 6, 0.06), rgba(166, 120, 6, 0.02)),
+    var(--surface);
+  border: 1px solid rgba(166, 120, 6, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 1px 1px rgba(23, 25, 29, 0.03);
+  transition: border-color 0.24s ease;
+}
+
+.card-featured::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 0 0 2px 2px;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.card-featured:hover {
+  border-color: rgba(166, 120, 6, 0.6);
+}
+
+/* Quiet surface card (no border) — for tinted bands */
+.card-plain {
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+
+/* Illustrated flag chip */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  background: var(--surface);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.7rem 1.25rem;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--navy-dark);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-accent:hover {
+  background: #855f04;
+}
+
+.btn-ghost {
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-ghost:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+/* ---------- Forms ---------- */
+
+.input {
+  width: 100%;
+  border: 1px solid var(--rule-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(20, 36, 61, 0.1);
+}
+.input::placeholder {
+  color: var(--ink-3);
+}
+
+/* ---------- Interaction language ---------- */
+
+/* Underline-grow — one consistent hover for text links/footer/nav rows */
+.link-grow {
+  position: relative;
+  display: inline-block;
+}
+.link-grow::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.05em;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.26s var(--ease-editorial);
+}
+.link-grow:hover::after,
+.link-grow:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Signature effect (masked typography reveal) ---------- */
+
+/* Clipping mask for headline reveal; inner span rises through it.
+   Descenders protected by a small bottom pad, compensated with a
+   matching negative margin so line rhythm is unchanged. */
+.reveal-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.reveal-mask--block {
+  display: block;
+}
+
+/* ---------- Surface texture ---------- */
+
+/* Static film grain — one restrained texture so the flat paper
+   does not read as "too clean". Painted above the light bands only
+   (multiply), ignored by dark panels, inert under reduced motion. */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+}
+/* ---------- Focus (keyboard a11y baseline) ---------- */
+:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+select,
+input[type="color"],
+summary {
+  cursor: pointer;
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: rgba(166, 120, 6, 0.2);
+}
+
+/* ---------- Lenis recommended styles ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Scrollbar — restrained ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f2ed;
+}
+::-webkit-scrollbar-thumb {
+  background: #cfcbc2;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8b3a8;
+}

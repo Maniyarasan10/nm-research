@@ -1,0 +1,186 @@
+# Web Design Styles Reference
+### Layouts, Cards, Animations, Effects & Scroll Techniques
+
+A working catalog for picking a distinctive direction per client/brief — not a checklist to stack all at once. Pick one layout family + one signature effect + restrained motion. Match complexity to the vision (maximalist briefs earn elaborate execution; minimal briefs earn precision).
+
+---
+
+## 1. PAGE LAYOUT STYLES
+
+**Bento Grid** — asymmetric grid of boxed modules, varying sizes, each a self-contained fact/feature. Good for SaaS/product feature walls.
+
+**Broadsheet / Editorial** — hairline rules, zero border-radius, dense multi-column newspaper layout, drop caps. Good for content-heavy, journalistic brands.
+
+**Split-Screen** — two vertical halves (image/text, before/after, two personas) that may scroll independently or swap on interaction.
+
+**Asymmetric / Broken Grid** — deliberately off-grid element placement, overlapping images/text, diagonal cuts. Feels art-directed, not templated.
+
+**Full-Bleed Hero Stack** — single dominant full-viewport hero (video/image/3D), then stacked full-width sections beneath, no side gutters.
+
+**Sidebar-Persistent (App Shell)** — fixed nav/sidebar, scrolling content pane. Dashboard and docs feel.
+
+**Magazine / Masonry** — Pinterest-style variable-height columns, dense visual browsing (portfolios, galleries).
+
+**Single-Page Scrollytelling** — one long narrative page, sections reveal as chapters, often paired with scroll-driven animation.
+
+**Diagonal / Skewed Sections** — angled section dividers instead of horizontal lines, creates motion without JS.
+
+**Card-Deck / Stack Reveal** — sections presented as a physical stack of cards you flip/swipe through.
+
+**Split Nav (Left Brand / Right Menu)** — brand mark fixed left, nav links fixed right, content centered — common in premium/luxury sites.
+
+**Terminal / Console Layout** — monospace, dark background, blinking cursor motifs — for dev tools, technical products.
+
+**Brutalist** — raw HTML-default aesthetics used deliberately: system fonts, visible borders, unstyled buttons, high contrast. A statement, not neglect.
+
+**Glass Panel / Layered Depth** — frosted translucent panels stacked over a blurred background layer, giving z-depth.
+
+**Zine / Collage** — hand-placed elements, mixed rotation angles, sticker-like badges, torn-paper edges — for youth/creative brands.
+
+**Product-First Grid (E-commerce)** — dense uniform product tiles, filter rail, infinite scroll.
+
+**Centered Minimal Column** — narrow centered content column, huge whitespace margins, one accent color — for essays, manifestos, personal sites.
+
+---
+
+## 2. CARD STYLES
+
+**Flat Bordered Card** — thin 1px border, no shadow, sharp or slightly rounded corners. Quiet, editorial.
+
+**Elevated / Soft-Shadow Card** — soft diffused shadow, subtle lift on hover. Classic SaaS.
+
+**Neumorphic Card** — soft inset/outset shadows on a matching background, "pressed into" the surface. Use sparingly — accessibility-risky if overused.
+
+**Glassmorphism Card** — semi-transparent background, backdrop-blur, thin light border — floats over a colorful/blurred backdrop.
+
+**Gradient-Border Card** — transparent/dark fill with an animated or static gradient ring as the border.
+
+**Spotlight/Glow Card** — radial glow follows the cursor within the card boundary (mouse-tracked gradient mask).
+
+**Tilt / 3D Perspective Card** — card tilts toward cursor position using perspective transforms (parallax-lite hover).
+
+**Flip Card** — 3D rotateY flip on hover/tap revealing back content.
+
+**Expanding/Accordion Card** — collapsed summary that grows in place to reveal detail, pushing siblings.
+
+**Image-Bleed Card** — image fills the entire card with text overlaid on a gradient scrim at the bottom.
+
+**Stacked/Layered Deck Card** — 2–3 cards peek from behind the front card, like a hand of cards.
+
+**Bordered Number/Index Card** — large ghost numeral (01, 02...) behind or beside content — only when order is real, per design principle.
+
+**Notched/Cut-Corner Card** — one or more corners clipped at an angle (clip-path) instead of rounded — gives a technical/industrial feel.
+
+**Ticket/Stub Card** — perforated-edge illusion via CSS (radial-gradient dots) mimicking a torn ticket.
+
+**Marquee-Tag Card** — small scrolling ticker of tags/keywords along one edge of the card.
+
+**Duotone Image Card** — image treated with a two-color overlay (brand colors) instead of full color, cohesive across a grid.
+
+---
+
+## 3. ANIMATION TECHNIQUES
+
+**Fade + Rise (Reveal on Scroll)** — opacity 0→1 with a small translateY, staggered across siblings. The most common but still effective when subtle.
+
+**Staggered Children** — list/grid items animate in sequence with small delays, not all at once.
+
+**Text Split & Reveal** — headline splits into characters/words/lines, each animates in independently (mask-reveal or translate+fade).
+
+**Clip-Path Wipe** — content revealed via an expanding/moving clip-path shape rather than opacity.
+
+**Morphing Blob/Shape** — organic SVG shape continuously morphs in the background (ambient, not attention-grabbing).
+
+**Magnetic Button** — button/element subtly follows cursor within a radius, snapping back on leave.
+
+**Cursor-Follow Custom Cursor** — replaces the system cursor with a custom shape/label that reacts to hovered elements.
+
+**Marquee / Infinite Scroll Ticker** — logos, tags, or text scroll continuously, often pausing on hover.
+
+**Counter/Number Ticker** — numbers animate upward from 0 to target value when scrolled into view.
+
+**Typewriter Effect** — text types out character by character, optional blinking cursor.
+
+**Parallax Layering** — background/foreground layers move at different scroll speeds for depth.
+
+**Scroll-Linked Progress Draw** — SVG path (line, underline, chart) draws itself as you scroll (stroke-dashoffset technique).
+
+**Sticky-then-Release Pin** — element pins in place during a scroll range, then releases to continue with the page.
+
+**Hover Underline Grow** — link underline draws in from one side on hover, not just instant appear.
+
+**Skeleton Loading Shimmer** — animated gradient sweep across placeholder blocks while content loads.
+
+**Elastic/Spring Micro-interactions** — buttons and toggles use spring physics (slight overshoot) instead of linear ease.
+
+**Page Transition Wipe** — full-viewport color panel wipes across on route change instead of a hard cut.
+
+**Cursor-Trail Particles** — small particles/dots trail the cursor, fading out (use very sparingly, high risk of feeling gimmicky).
+
+---
+
+## 4. VISUAL / SURFACE EFFECTS
+
+**Gradient Mesh Background** — soft multi-color blurred gradient blobs, often animated slowly.
+
+**Grain/Noise Overlay** — subtle film-grain texture over flat color to avoid a "too clean/AI" look.
+
+**Backdrop Blur (Frosted Glass)** — blur behind semi-transparent panels (nav bars, modals, cards).
+
+**Duotone/Split-Tone Imagery** — brand-colored two-tone treatment on all photography for cohesion.
+
+**Halftone/Dot Pattern** — print-style dot texture overlay, good for bold/editorial brands.
+
+**Line-Art Illustration Layer** — thin single-weight line illustrations as decorative background elements.
+
+**Spotlight/Vignette** — darkened edges with a lit center focus, directs attention to hero content.
+
+**Chromatic Aberration / Glitch** — RGB channel split effect on hover or load, for tech/edgy brands.
+
+**Liquid/Metaball Blend** — two shapes visually merge like liquid using SVG filters — distinctive but heavier to build.
+
+**Animated Gradient Text** — text fill uses a moving gradient (background-clip: text + animated position).
+
+**Outline/Ghost Typography** — huge stroke-only text used as background texture, not meant to be read closely.
+
+**Dithered Gradient** — retro pixel-dithered gradient instead of smooth blend — distinctive, on-trend for indie/creative brands.
+
+**3D Tilt Scene (WebGL/Three.js)** — full 3D object/scene that responds to scroll or cursor — high build cost, high distinctiveness.
+
+**Video/Loop Background** — muted looping ambient video behind hero content with a scrim for text legibility.
+
+---
+
+## 5. SCROLLING TECHNIQUES
+
+**Smooth/Inertia Scroll** — eased momentum scrolling (e.g. Lenis/Locomotive-style) instead of native jump-scroll.
+
+**Scroll-Snap Sections** — each section snaps fully into view, page feels like discrete "slides."
+
+**Horizontal Scroll Section** — a section scrolls sideways while the page scrolls down (common for portfolios/galleries).
+
+**Scroll-Driven Pinning** — an element (image, canvas frame sequence) stays fixed while surrounding text scrolls past it, changing state as it goes.
+
+**Frame-by-Frame Scroll Scrub** — a sequence of images plays forward/backward tied directly to scroll position (Apple product-page style).
+
+**Parallax Depth Scroll** — layers move at different rates, described above under animation, but as a whole-page scroll strategy.
+
+**Reveal-and-Lock Storytelling** — page pins on a section until a mini-narrative completes (numbers count up, items check off), then releases.
+
+**Progress Indicator Rail** — a fixed side/top bar fills or advances as the user scrolls through a long-form page.
+
+**Infinite/Looping Scroll** — content loops seamlessly (marquees, background patterns) independent of page scroll.
+
+**Rubber-Band / Bounce Edges** — slight overscroll bounce at top/bottom, mimicking native mobile feel.
+
+**Section Fade-Through** — outgoing section fades/scales down as the incoming one fades/scales up, rather than a hard cut.
+
+---
+
+## 6. HOW TO COMBINE THESE (without it looking AI-generated)
+
+- **Pick one layout family, one card style, one signature effect.** Everything else stays quiet.
+- **Motion should be orchestrated, not scattered** — one well-timed page-load sequence or scroll story beats five different hover effects competing for attention.
+
+- **Avoid the current AI-design tells** unless the brief specifically wants them: warm cream + terracotta serif combo, near-black + single acid accent, or broadsheet-with-zero-radius — these read as templated defaults right now, not choices.
+- **Always keep a floor**: mobile-responsive, visible keyboard focus, `prefers-reduced-motion` respected, regardless of how bold the direction is.
