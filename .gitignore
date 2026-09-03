@@ -2,6 +2,7 @@
 /*
 !.gitignore
 !/frontend/
+!/.github/
 
 # Ignore frontend build & dependency files
 frontend/node_modules/
