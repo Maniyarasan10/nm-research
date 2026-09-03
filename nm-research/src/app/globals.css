@@ -530,3 +530,49 @@ html.lenis body {
 ::-webkit-scrollbar-thumb:hover {
   background: #b8b3a8;
 }
+
+/* ============================================================
+   Marquee — editorial ticker strip
+   ------------------------------------------------------------
+   A quiet auto-scrolling band between sections. Seamless loop
+   via two identical halves and a -50% translate. Pauses on
+   hover, frozen under prefers-reduced-motion (the global reduce
+   rule above short-circuits the animation duration).
+   ============================================================ */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Soft edge fade so the band melts into neighbouring sections. */
+.marquee-row {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.marquee-track {
+  animation: marquee var(--marquee-duration, 38s) linear infinite;
+  will-change: transform;
+}
+
+.marquee-row:hover .marquee-track,
+.marquee-row:focus-within .marquee-track {
+  animation-play-state: paused;
+}

@@ -1,8 +1,10 @@
 "use client";
 
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 import Counter from "@/components/ui/Counter";
 import { SectionHeading } from "@/components/ui/Section";
+import { MOTION } from "@/lib/motion";
 
 const collabValues = [
   "Research Training",
@@ -16,7 +18,23 @@ const collabValues = [
   "International Exposure",
 ];
 
+const listStagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.045 } },
+};
+
+const bullet: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: MOTION.base, ease: MOTION.ease },
+  },
+};
+
 export default function Collaborations({ showHeading = true }: { showHeading?: boolean }) {
+  const reduce = useReducedMotion();
+
   return (
     <section id="collaborations" className="py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -60,17 +78,39 @@ export default function Collaborations({ showHeading = true }: { showHeading?: b
                 career development, and exposure to international research and
                 innovation.
               </p>
-              <div className="mt-7 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
-                {collabValues.map((v) => (
-                  <div
-                    key={v}
-                    className="flex items-center gap-2 text-sm font-medium text-ink-2"
-                  >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                    {v}
-                  </div>
-                ))}
-              </div>
+
+              {reduce ? (
+                <div className="mt-7 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+                  {collabValues.map((v) => (
+                    <div
+                      key={v}
+                      className="flex items-center gap-2 text-sm font-medium text-ink-2"
+                    >
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {v}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <motion.div
+                  className="mt-7 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3"
+                  variants={listStagger}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "0px 0px -40px 0px" }}
+                >
+                  {collabValues.map((v) => (
+                    <motion.div
+                      key={v}
+                      variants={bullet}
+                      className="flex items-center gap-2 text-sm font-medium text-ink-2"
+                    >
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {v}
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
             </div>
           </Reveal>
         </div>

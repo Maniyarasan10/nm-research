@@ -5,8 +5,9 @@ import { Check } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/Section";
+import Counter from "@/components/ui/Counter";
 import PayModal from "@/components/modals/PayModal";
-import { plans, formatINR } from "@/data/plans";
+import { plans } from "@/data/plans";
 
 export default function Membership() {
   const [pay, setPay] = useState<{ plan: string; amount: number } | null>(null);
@@ -56,7 +57,7 @@ export default function Membership() {
                   }`}
                 >
                   <span className="text-2xl">₹</span>
-                  {formatINR(plan.price)}
+                  <Counter target={plan.price} duration={1400} />
                   <span className="text-base font-normal text-ink-3">/year</span>
                 </div>
 

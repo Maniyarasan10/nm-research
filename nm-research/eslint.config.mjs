@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // Third-party installed AI tooling/skills (not project source):
     ".opencode/**",
+    // One-off asset build scripts (not app source):
+    "scripts/**",
   ]),
 ]);
 

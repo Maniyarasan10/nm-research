@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { services } from "@/data/services";
 import { domains } from "@/data/domains";
 import { plans } from "@/data/plans";
+import { MOTION } from "@/lib/motion";
 
 function NavLink({
   label,
@@ -42,16 +43,29 @@ function NavLink({
 
 export default function Navbar() {
   const pathname = usePathname();
+  const reduce = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const lastY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+      // Smart hide: tuck away while scrolling down, reappear on scroll up.
+      if (y > 140 && !mobileOpen) {
+        setHidden(y > lastY.current);
+      } else {
+        setHidden(false);
+      }
+      lastY.current = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [mobileOpen]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -77,7 +91,13 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6">
+    <motion.header
+      className="fixed inset-x-0 top-0 z-50 px-4 sm:px-6"
+      initial={reduce ? false : { y: -120 }}
+      animate={reduce ? { y: 0 } : { y: hidden ? -120 : 0 }}
+      transition={{ duration: 0.34, ease: MOTION.ease }}
+      style={{ willChange: "transform" }}
+    >
       <nav
         className={`mx-auto mt-3 flex h-14 max-w-6xl items-center justify-between gap-2 rounded-full border bg-paper/85 py-2 pl-2.5 pr-2.5 backdrop-blur-md shadow-sm transition-shadow duration-300 ${
           scrolled
@@ -232,6 +252,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }
