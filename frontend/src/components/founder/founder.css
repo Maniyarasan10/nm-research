@@ -1,0 +1,327 @@
+/* ============================================================
+   FOUNDER SECTION — cinematic research-laboratory showcase
+   Modular, scoped styles. Light neutral palette with a muted
+   burgundy engineering accent (NM mark).
+   ============================================================ */
+
+.founder-section {
+  --fn-bg: #f5f3ef;
+  --fn-graphite: #1c1c1c;
+  --fn-near-black: #111111;
+  --fn-warm-white: #f5f3ef;
+  --fn-warm-gray: #b8b3ac;
+  --fn-warm-gray-deep: #8a857c;
+  --fn-burgundy: #7a171c;
+  --fn-burgundy-deep: #4d0d11;
+  --fn-hairline: rgba(17, 17, 17, 0.08);
+
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 45% at 68% 18%, rgba(122, 23, 28, 0.05), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 22% 78%, rgba(28, 28, 28, 0.04), transparent 70%),
+    var(--fn-bg);
+  color: var(--fn-near-black);
+  overflow: hidden;
+  isolation: isolate;
+  /* professional geometric sans for the founder identity */
+  font-family: "Manrope", "Space Grotesk", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ---- Depth: atmospheric blur layer ---- */
+.founder-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* large blurred architectural shadows */
+  background:
+    radial-gradient(ellipse 42% 36% at 15% 62%, rgba(28, 28, 28, 0.08), transparent 70%),
+    radial-gradient(ellipse 48% 42% at 82% 24%, rgba(28, 28, 28, 0.06), transparent 72%);
+  filter: blur(30px);
+}
+
+/* ---- Depth: technical grid (near-invisible, reveals on hover) ---- */
+.founder-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(28, 28, 28, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(28, 28, 28, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, rgba(0, 0, 0, 0.5), transparent 75%);
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, rgba(0, 0, 0, 0.5), transparent 75%);
+  transition: opacity 0.8s var(--ease-out);
+  opacity: 0.5;
+}
+
+/* ---- Canvas container ---- */
+.founder-stage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: min(100vh, 980px);
+  min-height: 720px;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ---- Two-zone architectural layout ---- */
+.founder-zones {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 4rem);
+  padding: clamp(3.5rem, 8vh, 6rem) var(--gutter);
+}
+
+@media (min-width: 901px) {
+  .founder-stage {
+    display: block;
+  }
+  /* Layered composition: portrait stays on the LEFT; the founder identity
+     forms a clean centered column, and the research-core 3D scene sits as a
+     vertically-centered banner backdrop behind the portrait and identity. */
+  .founder-zones {
+    position: absolute;
+    inset: 0;
+    display: block;
+    padding: 0 var(--gutter);
+  }
+  .founder-layout {
+    position: absolute;
+    display: flex;
+  }
+  .founder-layout-portrait {
+    left: clamp(0.5rem, 2vw, 2.5rem);
+    top: 50%;
+    width: 36%;
+    transform: translateY(-50%);
+  }
+  .founder-layout-brand {
+    left: 50%;
+    top: 50%;
+    width: min(46%, 560px);
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 4;
+  }
+  .founder-layout-brand .founder-brand {
+    align-items: center;
+    padding-left: 0;
+    text-align: center;
+  }
+  .founder-layout-brand .founder-identity {
+    text-align: center;
+  }
+}
+
+/* ==================== FOUNDER PORTRAIT ==================== */
+
+.founder-visual {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+}
+
+.founder-portrait {
+  position: relative;
+  width: min(58%, 460px);
+  user-select: none;
+}
+
+.founder-portrait-inner {
+  position: relative;
+  contain: layout style;
+}
+
+.founder-portrait img {
+  width: 100%;
+  height: auto;
+  display: block;
+  will-change: transform;
+}
+
+/* soft atmospheric shadow + foreground separation */
+.founder-portrait::after {
+  content: "";
+  position: absolute;
+  inset: 55% -12% -18% -12%;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 60% 45% at 50% 50%,
+    rgba(28, 28, 28, 0.18),
+    rgba(28, 28, 28, 0) 70%
+  );
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+/* extremely subtle warm glow behind the portrait */
+.founder-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background: radial-gradient(
+    ellipse 50% 55% at 50% 46%,
+    rgba(245, 243, 239, 0.5),
+    rgba(245, 243, 239, 0) 72%
+  );
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* ==================== BRANDING COLUMN ==================== */
+
+.founder-brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: clamp(0.5rem, 3vw, 2.5rem);
+}
+
+/* ==================== FOUNDER IDENTITY ==================== */
+
+.founder-identity {
+  margin-top: clamp(1.8rem, 4vh, 2.8rem);
+  width: 100%;
+  padding-top: clamp(1rem, 2vh, 1.4rem);
+  border-top: 1px solid var(--fn-hairline);
+}
+
+.founder-name {
+  font-family: "Manrope", var(--font-display), sans-serif;
+  font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--fn-near-black);
+}
+
+.founder-role {
+  margin-top: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 1vw, 0.68rem);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--fn-burgundy);
+}
+
+.founder-creds {
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.58rem, 0.9vw, 0.66rem);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fn-warm-gray-deep);
+}
+
+/* tiny 1px hairlines framing the scene */
+.founder-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.founder-frame::before,
+.founder-frame::after {
+  content: "";
+  position: absolute;
+  background: var(--fn-hairline);
+}
+.founder-frame::before {
+  top: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+}
+.founder-frame::after {
+  bottom: 0;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* Two-column → single stacked "card". The 3D research-core scene is
+   intentionally hidden here: in the stacked layout the portrait is centered
+   with no free area, so the floating 3D backdrop has no room and would
+   overlap the portrait. */
+@media (max-width: 900px) {
+  .founder-section .scene-stage,
+  .founder-section .founder-core-stage {
+    display: none !important;
+  }
+
+  .founder-stage {
+    height: auto;
+    min-height: 0;
+  }
+
+  .founder-zones {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 6vh, 3rem);
+    padding: clamp(3.5rem, 9vh, 5rem) var(--gutter);
+    justify-items: center;
+  }
+
+  .founder-layout {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .founder-visual {
+    height: auto;
+    justify-content: center;
+  }
+
+  .founder-portrait {
+    width: min(58%, 300px);
+  }
+
+  .founder-brand {
+    width: 100%;
+    max-width: 520px;
+    padding-left: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .founder-brand .founder-identity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .founder-portrait {
+    width: min(56%, 240px);
+  }
+  .founder-zones {
+    gap: 1.75rem;
+  }
+}
+
+/* ==================== REDUCED MOTION ==================== */
