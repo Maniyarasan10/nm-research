@@ -18,3 +18,4 @@ frontend/*.log
 Thumbs.db
 .idea/
 .vscode/
+.opencode
