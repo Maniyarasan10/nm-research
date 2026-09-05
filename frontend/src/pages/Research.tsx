@@ -1,8 +1,6 @@
 import { lazy, Suspense, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import PageHero from "@/components/ui/PageHero";
-import SectionHeading from "@/components/ui/SectionHeading";
-import AiTools from "@/components/sections/AiTools";
 import { Reveal } from "@/components/ui/Reveal";
 import SceneShell from "@/components/3d/SceneShell";
 import { domains, totalSubjects } from "@/data/site";
@@ -76,18 +74,6 @@ export default function Research() {
 
       <section style={{ position: "relative", paddingBlock: "4rem 6rem", overflow: "hidden" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <SectionHeading
-            index="01"
-            label="Research ecosystem & domains"
-            title={
-              <>
-                FIND YOUR SUBJECT ACROSS THE{" "}
-                <span style={{ color: "var(--accent)" }}>RESEARCH INDEX</span>
-              </>
-            }
-            subtitle={`${totalSubjects} subjects across ${domains.length} research domains — searchable and fully supported by NM Research.`}
-          />
-
           {/* Search + filter */}
           <Reveal>
             <div
@@ -141,12 +127,6 @@ export default function Research() {
               </div>
             </div>
           </Reveal>
-
-          {/* AI tools */}
-          <div style={{ marginTop: 28 }}>
-            <div className="eyebrow" style={{ marginBottom: 16 }}>NM research tools</div>
-            <AiTools />
-          </div>
 
           {/* Domains */}
           <Reveal>

@@ -35,13 +35,15 @@ export default function InnovationScene() {
       const rail = el.querySelector<HTMLElement>("[data-stage-rail]");
 
       const tl = gsap.timeline({
+        defaults: { force3D: true },
         scrollTrigger: {
           trigger: el,
           start: isDesktop ? "top 80px" : "top 25%",
           end: isDesktop ? "+=150%" : "+=130%",
-          scrub: isDesktop ? 1 : true,
+          scrub: 1,
           pin: true,
           pinType: "transform",
+          invalidateOnRefresh: true,
           onUpdate: (self) => {
             if (counter)
               counter.textContent = String(Math.round(self.progress * 100)).padStart(2, "0");
@@ -85,6 +87,7 @@ export default function InnovationScene() {
         overflow: "hidden",
         borderTop: "1px solid var(--hairline)",
         backgroundColor: "var(--bg-primary)",
+        willChange: "transform",
       }}
     >
       {show3D ? (
@@ -177,7 +180,6 @@ export default function InnovationScene() {
                   style={{
                     fontSize: "clamp(1.7rem, 4.5vw, 3.1rem)",
                     color: "var(--text-primary)",
-                    willChange: "transform, opacity",
                   }}
                 >
                   {s}

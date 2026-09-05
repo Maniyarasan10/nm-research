@@ -206,10 +206,10 @@ export default function Footer() {
             lineHeight: 0.8,
             letterSpacing: "-0.02em",
             whiteSpace: "nowrap",
-            opacity: 0.5,
+            opacity: 1,
           }}
         >
-          RESEARCH
+          NM RESEARCH
         </div>
       </Reveal>
 
