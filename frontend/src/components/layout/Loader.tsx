@@ -188,7 +188,7 @@ export function Loader() {
             rowGap: 8,
           }}
         >
-          <span>NM·RESEARCH — ARCHIVE 001601</span>
+          <span>NM·RESEARCH</span>
           <span style={{ color: "var(--accent-bright)" }}>LOADING / EST. 2026</span>
         </div>
 
@@ -387,8 +387,8 @@ export function Loader() {
         .loader-main [data-batch].is-done .batch-check::before { content: "✓"; }
         @media (max-width: 820px) {
           .loader-checklist { display: none !important; }
-          .loader-main { flex-direction: column; justify-content: center; text-align: center; }
-          .loader-main > div { width: 100%; }
+          .loader-main { flex-direction: column; justify-content: center !important; align-items: center !important; text-align: center; }
+          .loader-main > div { width: 100%; flex: none !important; }
           .loader-progress { text-align: center !important; }
           .loader-progress .loader-progress-bar { margin: 0 auto 6px auto !important; }
         }

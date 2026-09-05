@@ -8,7 +8,7 @@ export const site = {
   url: "https://nmresearch.co.in",
   founder: {
     name: "Dr. Mathivanan Nallathambi",
-    credentials: "M.Sc. · Ph.D. · PDF",
+    credentials: "MSc · PhD · PDF",
     role: "Founder & CEO",
   },
   positioning:
