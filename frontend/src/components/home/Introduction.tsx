@@ -55,9 +55,9 @@ export default function Introduction({
 
         <SplitReveal as="h2" className="display-lg" triggerRef={triggerRef}>
           <span style={{ display: "block", textAlign: "right" }}>
-            WE FORGE QUIETLY. WE DON'T FOLLOW
+            WE FORGE QUIETLY. WE DON'T
             <br />
-            TECHNOLOGY —{" "}
+            FOLLOW TECHNOLOGY —{" "}
             <span style={{ color: "var(--text-muted)", fontWeight: 300 }}>
               WE EXPLORE WHERE IT IS GOING.
             </span>

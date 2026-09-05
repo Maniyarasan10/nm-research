@@ -7,12 +7,6 @@ export type AiTool = {
 
 export const aiTools: AiTool[] = [
   {
-    id: "topic-generator",
-    title: "AI Topic Generator",
-    desc: "Synthesises novel, scope-appropriate research topics from the NM subject index based on your domain, expertise level and focus keyword.",
-    status: "live",
-  },
-  {
     id: "pdf-summarizer",
     title: "AI PDF Summarizer",
     desc: "Upload any paper and receive structured summaries and key findings.",

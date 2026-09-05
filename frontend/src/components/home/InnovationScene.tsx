@@ -21,9 +21,9 @@ export default function InnovationScene() {
   const sectionRef = useRef<HTMLElement>(null);
   const progressRef = useRef({ value: 0 });
   const reduced = useReducedMotion();
-  const { isLowPower, webgl } = useDeviceCapability();
-  const show3D = webgl && !isLowPower && !reduced;
   const isDesktop = useMediaQuery("(min-width: 900px)");
+  const { isLowPower, webgl, isTouch } = useDeviceCapability();
+  const show3D = webgl && !isLowPower && !reduced && isDesktop && !isTouch;
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -45,8 +45,10 @@ export default function InnovationScene() {
           pinType: "transform",
           invalidateOnRefresh: true,
           onUpdate: (self) => {
-            if (counter)
-              counter.textContent = String(Math.round(self.progress * 100)).padStart(2, "0");
+            if (counter) {
+              const pct = String(Math.round(self.progress * 100)).padStart(2, "0");
+              if (counter.textContent !== pct) counter.textContent = pct;
+            }
             progressRef.current.value = self.progress;
           },
         },

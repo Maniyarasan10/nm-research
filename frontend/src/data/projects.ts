@@ -23,15 +23,6 @@ export const featuredProjects: Project[] = [
   },
   {
     index: "02",
-    name: "AI Topic Generator",
-    statement:
-      "NM's first deployed research tool. It synthesises novel, scope-appropriate research topics from the subject index, conditioned on domain, expertise level and a focus keyword.",
-    technology: "AI · Deterministic synthesis · Subject index",
-    status: "Live Tool",
-    href: "/research",
-  },
-  {
-    index: "03",
     name: "The Publication Pipeline",
     statement:
       "End-to-end publication guidance across 58 refereed journals — SCI, SCIE, Scopus, Web of Science and UGC CARE — from journal shortlisting to response-to-reviewers.",
@@ -40,7 +31,7 @@ export const featuredProjects: Project[] = [
     href: "/services",
   },
   {
-    index: "04",
+    index: "03",
     name: "Global Conference Program",
     statement:
       "International and national conferences, workshops and webinars connecting researchers, industry leaders and academics across 8 countries of operation.",

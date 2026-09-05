@@ -1,0 +1,8 @@
+# robots.txt — NM Research (nmresearch.co.in)
+# NM Group of Industries and Research Foundation
+
+User-agent: *
+Allow: /
+
+# Sitemap for search engines
+Sitemap: https://nmresearch.co.in/nm-research/sitemap.xml

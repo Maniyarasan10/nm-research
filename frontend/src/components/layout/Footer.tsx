@@ -202,7 +202,7 @@ export default function Footer() {
           style={{
             marginTop: "3.5rem",
             textAlign: "center",
-            fontSize: "clamp(4rem, 16vw, 14rem)",
+            fontSize: "min(14rem, 12.5vw)",
             lineHeight: 0.8,
             letterSpacing: "-0.02em",
             whiteSpace: "nowrap",
@@ -237,7 +237,6 @@ export default function Footer() {
             margin-top: -6px;
           }
           .footer-grid { grid-template-columns: 1fr !important; }
-          .ghost-text { font-size: clamp(3rem, 20vw, 7rem) !important; }
         }
       `}</style>
     </footer>
